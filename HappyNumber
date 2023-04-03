@@ -1,0 +1,32 @@
+class Solution {
+    public boolean isHappy(int n) {
+        
+        int sum;
+        List<Integer> prvsSum = new ArrayList<Integer>();
+
+        while(n>0){
+            if(n==1)
+              return true;
+            else
+            {
+               sum = getSquareSum(n);
+               if(prvsSum.contains(sum))
+                  return false;
+               prvsSum.add(sum);
+               n = sum;
+            }
+        }
+        return false;
+    }
+
+    public int getSquareSum(int num){
+      int sum =0;
+      while(num>0)
+      {
+        int n = num%10;
+        sum += n*n;
+        num = num/10;
+      }
+      return sum;
+    }
+}
