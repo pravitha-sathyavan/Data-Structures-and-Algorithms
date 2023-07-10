@@ -12,3 +12,8 @@ class Solution {
         return profit;
     }
 }
+
+
+// We will buy the stock at the previous price and sell it today to make a profit.
+// If we repeat this for all such days (where the current price is higher than the previous day's price),
+// we can add all the profits to get the total profit.
