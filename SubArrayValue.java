@@ -1,5 +1,3 @@
-//Code not running
-
 
 class Solution {
     public static int ValueOfSubarrays(int N, int[] arr) {
@@ -20,12 +18,13 @@ class Solution {
              temp = map.get(i);
             if(temp.size()==1)
                continue;
-            for(long j=0;j<temp.size()-1;j++){
-                value += (temp.get(i)-prev)*(N-temp.get(i+1));
-                prev = temp.get(i);
+            for(int j=0;j<temp.size()-1;j++){
+                value += (temp.get(j)-prev)*(N-temp.get(j+1));
+                prev = temp.get(j);
                 value = value % mod;
             }
         }
         return (int)value;
     }
 }
+        
