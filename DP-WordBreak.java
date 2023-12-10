@@ -1,4 +1,4 @@
-class Solution {
+/class Solution {
     public boolean wordBreak(String s, List<String> wordDict) {
       int size = s.length();
       boolean dp[] =  new boolean[size+1];
