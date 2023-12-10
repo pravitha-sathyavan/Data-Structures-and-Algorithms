@@ -1,3 +1,4 @@
+// Sort according to the end time of activities and compare the endtime and next startime
 class Activity{
     int start;
     int end;
