@@ -1,31 +1,41 @@
+/*
+You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security systems connected and it will automatically contact the police if two adjacent houses were broken into on the same night.
+
+Given an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.
+
+ 
+
+Example 1:
+
+Input: nums = [1,2,3,1]
+Output: 4
+Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
+Total amount you can rob = 1 + 3 = 4.
+Example 2:
+
+Input: nums = [2,7,9,3,1]
+Output: 12
+Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1).
+Total amount you can rob = 2 + 9 + 1 = 12.
+ 
+
+Constraints:
+
+1 <= nums.length <= 100
+0 <= nums[i] <= 400
+    
+*/
 class Solution {
     public int rob(int[] nums) {
-  
-      int n = nums.length;
-      int money[] = new int[n];
-
-      for(int i=n-1;i>=0;i--){
-          if(i==n-1)
-              money[i]=nums[i];
-          else if(i == n-2)
-              money[i]= max(nums[i],nums[i+1]);
-          else if(i == n-3)
-             money[i] = max(nums[i]+nums[i+2],nums[i+1]);
-          else
-            money[i] = max((nums[i] + money[i+2]),
-                           (nums[i+1] + money[i+3]));
-      }
-      if(n>1)
-      return max(money[0],money[1]);
-      else
-      return nums[0];
-    } 
-
-    int max(int a, int b)
-    {
-      if(a>b)
-        return a;
-      else
-       return b;
-    }   
+        int n = nums.length;
+        if(n==1)
+            return nums[0];
+        int money[] = new int[n];
+        money[n-1] = nums[n-1];
+        money[n-2] = Math.max(nums[n-1],nums[n-2]); 
+        for(int i=n-3;i>=0;i--){
+            money[i] = Math.max((nums[i] + money[i+2]), money[i+1]);
+        } 
+        return money[0];
+    }
 }
